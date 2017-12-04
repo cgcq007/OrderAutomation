@@ -1,8 +1,0 @@
-com\bestbuy\project\BestBuyAutomation\AddShippingAddress.class
-com\bestbuy\project\BestBuyAutomation\ClickingOnItemsUnderProducts.class
-com\bestbuy\project\BestBuyAutomation\BrowserSetUp.class
-com\bestbuy\project\BestBuyAutomation\LogInToAccount.class
-com\bestbuy\project\BestBuyAutomation\BestBuyHomePage.class
-com\bestbuy\project\BestBuyAutomation\RemoveShippingAddress.class
-com\bestbuy\project\BestBuyAutomation\NavigateInHomepageItems.class
-com\bestbuy\project\BestBuyAutomation\CloseModalAndAlert.class
