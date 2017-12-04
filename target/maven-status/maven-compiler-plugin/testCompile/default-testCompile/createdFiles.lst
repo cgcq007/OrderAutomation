@@ -1,0 +1,4 @@
+com\bestbuy\project\BestBuyAutomation\LogInTest.class
+com\bestbuy\project\BestBuyAutomation\AddShippingTest.class
+com\bestbuy\project\BestBuyAutomation\AddThenRemoveShippingTest.class
+com\bestbuy\project\BestBuyAutomation\RemoveAddressTest.class
