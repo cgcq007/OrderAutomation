@@ -22,7 +22,7 @@ public class AddNewItem {
 			WebElement search = driver.findElement(By.cssSelector("#gh-search-input"));
 			wait.until(ExpectedConditions.elementToBeClickable(search));
 			log.info("Locate the search webElement");
-			String sku = "5408200";
+			String sku = "5805312";
 			search.sendKeys(sku);
 			search.sendKeys(Keys.ENTER);
 			

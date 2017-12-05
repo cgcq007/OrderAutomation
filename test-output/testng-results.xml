@@ -1,54 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="127569" started-at="2017-12-04T19:19:27Z" finished-at="2017-12-04T19:21:35Z">
+  <suite name="Default suite" duration-ms="46" started-at="2017-12-04T23:27:31Z" finished-at="2017-12-04T23:27:31Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="127569" started-at="2017-12-04T19:19:27Z" finished-at="2017-12-04T19:21:35Z">
+    <test name="Default test" duration-ms="46" started-at="2017-12-04T23:27:31Z" finished-at="2017-12-04T23:27:31Z">
       <class name="com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest">
-        <test-method status="PASS" signature="initializeData()[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="initializeData" is-config="true" duration-ms="245" started-at="2017-12-04T11:19:27Z" finished-at="2017-12-04T11:19:27Z">
+        <test-method status="PASS" signature="initializeData()[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="initializeData" is-config="true" duration-ms="34" started-at="2017-12-04T15:27:31Z" finished-at="2017-12-04T15:27:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeData -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="setUp" is-config="true" duration-ms="9078" started-at="2017-12-04T11:19:27Z" finished-at="2017-12-04T11:19:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testOrderThenCheckOut(int)[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="testOrderThenCheckOut" duration-ms="43631" started-at="2017-12-04T11:19:37Z" data-provider="accountName" finished-at="2017-12-04T11:20:20Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[0]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testOrderThenCheckOut -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="tearDown" is-config="true" duration-ms="13869" started-at="2017-12-04T11:20:20Z" finished-at="2017-12-04T11:20:34Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="setUp" is-config="true" duration-ms="10938" started-at="2017-12-04T11:20:34Z" finished-at="2017-12-04T11:20:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testOrderThenCheckOut(int)[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="testOrderThenCheckOut" duration-ms="35930" started-at="2017-12-04T11:20:45Z" data-provider="accountName" finished-at="2017-12-04T11:21:21Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[1]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testOrderThenCheckOut -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest@c267ef4]" name="tearDown" is-config="true" duration-ms="13830" started-at="2017-12-04T11:21:21Z" finished-at="2017-12-04T11:21:35Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
       </class> <!-- com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

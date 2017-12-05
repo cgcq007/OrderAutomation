@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -104,7 +105,7 @@ public class CartCheckOut {
 			Sheet sheet = workbook.getSheet("Bestbuy GC");
 
 			for (GiftCard card : cards) {
-//				System.out.println(card.getCardNum() + "card num");
+				// System.out.println(card.getCardNum() + "card num");
 				for (Row row : sheet) {
 					System.out.println(row.getCell(0).toString() + "cell num");
 					if (row.getCell(0).toString().equals(card.getCardNum())) {
@@ -112,7 +113,7 @@ public class CartCheckOut {
 						break;
 					} else {
 
-//						System.out.println("WTF");
+						// System.out.println("WTF");
 					}
 				}
 			}
@@ -212,7 +213,11 @@ public class CartCheckOut {
 		// go to cart
 		try {
 			WebElement modal = driver.switchTo().activeElement();
-			WebElement goToCart = modal.findElement(By.linkText("No, thanks. Go to cart ›"));
+			WebElement goToCart = wait.until(ExpectedConditions
+					.elementToBeClickable(modal.findElement(By.linkText("No, thanks. Go to cart ›"))));
+
+			// WebElement goToCart = modal.findElement(By.linkText("No, thanks.
+			// Go to cart ›"));
 			// WebElement goToCart = wait
 			// .until(ExpectedConditions.presenceOfElementLocated(By.linkText("No,
 			// thanks. Go to cart ›")));
@@ -226,8 +231,9 @@ public class CartCheckOut {
 
 		// check out
 		try {
-			WebElement checkOut = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(
-					"#sc-store-availability-target > div > div > span > div > div.cart-listing.clearfix > div > div.listing-header > div.listing-header__body.clearfix > div > button")));
+			Thread.sleep(1000);
+			WebElement checkOut = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+					"//*[@id='sc-store-availability-target']/div/div/span/div/div[3]/div/div[1]/div[1]/div/button")));
 			checkOut.click();
 
 			// continue to payment information
@@ -248,7 +254,7 @@ public class CartCheckOut {
 		try {
 			WebElement placeOrder = wait.until(ExpectedConditions
 					.elementToBeClickable(By.cssSelector("button.btn.btn-lg.btn-block.btn-secondary")));
-			// placeOrder.click();
+			placeOrder.click();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
