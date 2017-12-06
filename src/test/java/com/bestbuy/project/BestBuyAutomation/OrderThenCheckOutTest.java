@@ -35,7 +35,13 @@ public class OrderThenCheckOutTest {
 	BrowserSetUp setup = new BrowserSetUp();
 	CartCheckOut cartcheck = new CartCheckOut();
 	List<Account> accounts = new ArrayList<Account>();
-//	String[] name = null;
+	String sku = "5805312";
+
+	public OrderThenCheckOutTest(String sku) {
+		this.sku = sku;
+	}
+
+	// String[] name = null;
 
 	@BeforeTest
 	public void initializeData() {
@@ -99,8 +105,6 @@ public class OrderThenCheckOutTest {
 
 	}
 
-
-
 	@DataProvider(name = "accountName")
 	public Object[][] createdata() {
 		Object[][] accountIdx = new Object[accounts.size()][1];
@@ -110,11 +114,11 @@ public class OrderThenCheckOutTest {
 		return accountIdx;
 	}
 
-	@Test(dataProvider="accountName")
+	@Test(dataProvider = "accountName")
 	public void testOrderThenCheckOut(int accountIdx) throws Exception {
-		
-		la.login(driver,accounts.get(accountIdx) );
-		addItem.add(driver);
+
+		la.login(driver, accounts.get(accountIdx));
+		addItem.add(driver, sku);
 		cartcheck.checkOut(driver, accounts.get(accountIdx));
 
 		// la.login(driver);
@@ -122,7 +126,7 @@ public class OrderThenCheckOutTest {
 		// addItem.add(driver);
 		// log.info("Added new Item");
 		// cartcheck.checkOut(driver);
-		 log.info("Check out");
+		log.info("Check out");
 
 	}
 

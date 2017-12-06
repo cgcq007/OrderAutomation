@@ -15,14 +15,13 @@ public class AddNewItem {
 	// ExtentReports reports;
 	// ExtentTest test;
 
-	public void add(WebDriver driver) {
+	public void add(WebDriver driver, String sku) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			//search
 			WebElement search = driver.findElement(By.cssSelector("#gh-search-input"));
 			wait.until(ExpectedConditions.elementToBeClickable(search));
 			log.info("Locate the search webElement");
-			String sku = "5805312";
 			search.sendKeys(sku);
 			search.sendKeys(Keys.ENTER);
 			
