@@ -35,6 +35,7 @@ public class MainController {
 
 		}
 		TestNG tng = new TestNG();
+		
 		tng.setTestClasses(new Class[]{OrderThenCheckOutTest.class});
 		tng.run();
 	}

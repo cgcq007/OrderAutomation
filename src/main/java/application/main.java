@@ -20,11 +20,8 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void kkk() {
-		launch();
-	}
 
 	public static void main(String[] args) {
-		Main.kkk();
+		launch(args);;
 	}
 }
