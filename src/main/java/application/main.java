@@ -1,32 +1,30 @@
 package application;
 
-import java.io.IOException;
-
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.fxml.FXMLLoader;
 
-public class main extends Application {
-
+public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("MyScene.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.setTitle("FXML Welcome");
+			VBox root = FXMLLoader.load(getClass().getResource("MainScene.fxml"));
+			Scene scene = new Scene(root, 500, 300);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	public static void kkk() {
+		launch();
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+		Main.kkk();
 	}
 }

@@ -1,6 +1,9 @@
 package com.bestbuy.project.BestBuyAutomation;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,16 +15,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 
-import com.beust.jcommander.Parameter;
+import org.testng.annotations.Test;
 
 public class OrderThenCheckOutTest {
 
@@ -36,10 +37,6 @@ public class OrderThenCheckOutTest {
 	CartCheckOut cartcheck = new CartCheckOut();
 	List<Account> accounts = new ArrayList<Account>();
 	String sku = "5805312";
-
-	public OrderThenCheckOutTest(String sku) {
-		this.sku = sku;
-	}
 
 	// String[] name = null;
 
@@ -92,6 +89,26 @@ public class OrderThenCheckOutTest {
 		}
 	}
 
+	@BeforeClass
+	public void setSku() {
+		File txtSku = new File("./sku.txt");
+		try {
+			FileInputStream fileInputStream = new FileInputStream(txtSku);
+			InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
+			BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+			StringBuffer sb = new StringBuffer();
+			String line = null;
+			while ((line = bufferedReader.readLine()) != null) {
+				sb.append(line);
+			}
+			sku = sb.toString().trim();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
 	@BeforeMethod
 	public void setUp() {
 		driver = setup.setupBrowser(driver, browserName, baseUrl);
@@ -100,7 +117,7 @@ public class OrderThenCheckOutTest {
 	@AfterMethod
 	public void tearDown() throws Exception {
 
-		Thread.sleep(13000);
+		Thread.sleep(5000);
 		driver.quit();
 
 	}
