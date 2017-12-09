@@ -48,7 +48,7 @@ public class CartCheckOut {
 		System.out.println("Reading Cards");
 		List<GiftCard> cards = new ArrayList<GiftCard>();
 
-		File xlsCards = new File("C:\\Users\\cgcq0\\Desktop\\GiftCards.xls");
+		File xlsCards = new File("./GiftCards.xls");
 		// 获得工作簿对象
 		Workbook workbook;
 		try {

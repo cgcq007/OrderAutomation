@@ -44,7 +44,7 @@ public class OrderThenCheckOutTest {
 	public void initializeData() {
 		System.out.println("Reading Accounts");
 
-		File xlsAccounts = new File("C:\\Users\\cgcq0\\Desktop\\Accounts.xls");
+		File xlsAccounts = new File("./Accounts.xls");
 		// 获得工作簿对象
 		Workbook workbook;
 		try {
