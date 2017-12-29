@@ -19,10 +19,13 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.ExpectedExceptions;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -32,13 +35,20 @@ public class CartCheckOut {
 
 	public void chooseToShipIfRadioPresent(WebDriver driver) {
 		try {
-			List<WebElement> allStrong = driver.findElements(By.tagName("strong"));
-			Assert.assertTrue(!allStrong.isEmpty());
-			for (WebElement e : allStrong) {
-				if (e.getText().contains("FREE Shipping"))
-					e.click();
+			log.info("Free Ships are choosing");
+			List<WebElement> abilityBody = driver.findElements(By.className("availability__body"));
+			Assert.assertTrue(!abilityBody.isEmpty());
+			for (WebElement e : abilityBody) {
+				List<WebElement> strongs = e.findElements(By.tagName("strong"));
+				for (WebElement s : strongs) {
+					if (s.getText().contains("FREE Shipping")) {
+						s.click();
+						log.info("Free ship is chose");
+					}
+				}
+				log.info("in loop");
 			}
-			System.out.println("Free ships are choosing");
+
 		} catch (NoSuchElementException Ex) {
 			System.out.println("No choice for shipping way");
 		}
@@ -100,7 +110,7 @@ public class CartCheckOut {
 		FileInputStream xlsCards = null;
 		Workbook workbook;
 		try {
-			xlsCards = new FileInputStream(new File("C:\\Users\\cgcq0\\Desktop\\GiftCards.xls"));
+			xlsCards = new FileInputStream(new File("./GiftCards.xls"));
 			workbook = WorkbookFactory.create(xlsCards);
 			Sheet sheet = workbook.getSheet("Bestbuy GC");
 
@@ -118,7 +128,7 @@ public class CartCheckOut {
 				}
 			}
 			xlsCards.close();
-			FileOutputStream fos = new FileOutputStream("C:\\Users\\cgcq0\\Desktop\\GiftCards.xls");
+			FileOutputStream fos = new FileOutputStream("./GiftCards.xls");
 			workbook.write(fos);
 			workbook.close();
 
@@ -212,12 +222,13 @@ public class CartCheckOut {
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		// go to cart
 		try {
+			// Thread.sleep(2000);
 			WebElement modal = driver.switchTo().activeElement();
-			WebElement goToCart = wait.until(ExpectedConditions
-					.elementToBeClickable(modal.findElement(By.linkText("No, thanks. Go to cart ›"))));
+			// WebElement goToCart = wait.until(ExpectedConditions
+			// .elementToBeClickable(modal.findElement(By.linkText("No, thanks.
+			// Go to cart ›"))));
 
-			// WebElement goToCart = modal.findElement(By.linkText("No, thanks.
-			// Go to cart ›"));
+			WebElement goToCart = modal.findElement(By.linkText("No, thanks. Go to cart ›"));
 			// WebElement goToCart = wait
 			// .until(ExpectedConditions.presenceOfElementLocated(By.linkText("No,
 			// thanks. Go to cart ›")));
@@ -226,14 +237,50 @@ public class CartCheckOut {
 			System.out.println(ex.getMessage());
 		}
 
+		// temp storage the check out button
+//		WebElement checkOut = null;
+//		try {
+//			String checkOutPath = "button.btn.btn-lg.btn-block.btn-secondary";
+//			checkOut = driver.findElement(By.cssSelector(checkOutPath));
+//			System.out.println(checkOut.getText());
+//			log.info("store check out button");
+//		} catch (Exception ex) {
+//
+//		}
+
 		// shipping choice
 		chooseToShipIfRadioPresent(driver);
 
 		// check out
 		try {
-			Thread.sleep(1000);
-			WebElement checkOut = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//*[@id='sc-store-availability-target']/div/div/span/div/div[3]/div/div[1]/div[1]/div/button")));
+			// Thread.sleep(1000);
+			driver.navigate().refresh();
+			 WebElement modal = driver.switchTo().activeElement();
+			 String checkOutPath =
+			 "button.btn.btn-lg.btn-block.btn-secondary";
+			 WebElement checkOut =
+			 modal.findElement(By.cssSelector(checkOutPath));
+			// WebElement checkOut = wait.until(new
+			// ExpectedCondition<WebElement>(){
+			//
+			// @Override
+			// public WebElement apply(WebDriver d) {
+			// // TODO Auto-generated method stub
+			// return d.findElement(By.cssSelector(checkOutPath));
+			// }});
+			// System.out.println(checkOut.toString());
+			// WebElement checkOut
+			// =wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+			// "//*[@id='sc-store-availability-target']/div/div/span/div/div[3]/div/div[1]/div[1]/div/button")));
+			// WebDriver modal = driver.switchTo().defaultContent();
+			// WebDriverWait tmpWait = new WebDriverWait(modal, 5);
+			// WebElement checkOut =
+			// tmpWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(checkOutPath)));
+			// wait.until(ExpectedConditions.elementToBeClickable(checkOut));
+//			while (driver.findElement(By.className("page-spinner__lock")).isDisplayed()) {
+//				Thread.sleep(500);
+//			}
+			
 			checkOut.click();
 
 			// continue to payment information

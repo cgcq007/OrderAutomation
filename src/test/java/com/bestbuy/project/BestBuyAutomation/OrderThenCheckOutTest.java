@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +15,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -37,8 +41,9 @@ public class OrderThenCheckOutTest {
 	CartCheckOut cartcheck = new CartCheckOut();
 	List<Account> accounts = new ArrayList<Account>();
 	String sku = "5805312";
-
-	// String[] name = null;
+	Proxy proxy = new Proxy();
+	String PROXY = "35.198.66.117:80";
+	DesiredCapabilities cap = new DesiredCapabilities();
 
 	@BeforeTest
 	public void initializeData() {
@@ -50,7 +55,7 @@ public class OrderThenCheckOutTest {
 		try {
 			workbook = WorkbookFactory.create(xlsAccounts);
 			// 获得第一工作表
-			Sheet sheet = workbook.getSheet("BestBuy");
+			Sheet sheet = workbook.getSheet("Camarillo");
 			if (sheet != null) {
 				for (Row row : sheet) {
 					Account account = new Account();
@@ -109,9 +114,13 @@ public class OrderThenCheckOutTest {
 
 	}
 
+
 	@BeforeMethod
 	public void setUp() {
-		driver = setup.setupBrowser(driver, browserName, baseUrl);
+//		proxy.setHttpProxy(PROXY).setFtpProxy(PROXY).setSslProxy(PROXY);
+//		cap.setCapability(CapabilityType.PROXY, proxy);
+//		driver = setup.setupBrowser(driver, cap, browserName, baseUrl);
+		driver = setup.setupBrowser(driver,browserName , baseUrl);
 	}
 
 	@AfterMethod
@@ -134,6 +143,8 @@ public class OrderThenCheckOutTest {
 	@Test(dataProvider = "accountName")
 	public void testOrderThenCheckOut(int accountIdx) throws Exception {
 
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 		la.login(driver, accounts.get(accountIdx));
 		addItem.add(driver, sku);
 		cartcheck.checkOut(driver, accounts.get(accountIdx));

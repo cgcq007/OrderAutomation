@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)">
     <classes>
       <class name="com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest">
         <methods>
-          <include name="testOrderThenCheckOut" invocation-numbers="0"/>
+          <include name="testOrderThenCheckOut"/>
           <include name="initializeData"/>
           <include name="tearDown"/>
           <include name="setSku"/>
@@ -13,5 +13,5 @@
         </methods>
       </class> <!-- com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->

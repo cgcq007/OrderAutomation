@@ -5,9 +5,10 @@
     <classes>
       <class name="com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest">
         <methods>
-          <include name="testOrderThenCheckOut"/>
+          <include name="testOrderThenCheckOut" invocation-numbers="0"/>
           <include name="initializeData"/>
           <include name="tearDown"/>
+          <include name="setSku"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.bestbuy.project.BestBuyAutomation.OrderThenCheckOutTest -->
